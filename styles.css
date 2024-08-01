@@ -1,7 +1,7 @@
 body {
     background-image: 
         linear-gradient(
-            to right, #bf5700, #f8e3c5
+            to bottom, #bf5700, #f8e3c5
         );
     min-height: 100vh;
     margin: 0;
@@ -17,7 +17,6 @@ body {
     left: 0;
     width : 15vw;
     height: 100vh;
-    background: #222222;
     font-size: 2vw;
 }
 
@@ -35,19 +34,17 @@ body {
 
 .slider{
     position: relative;
-    width: 85vw;
+    width: 80vw;
     height: 60vh;
     overflow: hidden;
 }
 .item{
     position: absolute;
-    width: 40%;
     height: fit-content;
     background-color: #fff;
     border-radius: 10px;
     padding: 20px;
     transition: 0.5s;
-    left: calc(50% - 110px);
     top: 0;
 }
 .next, .prev{
@@ -74,7 +71,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-left: 15vw;
 }
 
 .bio{
