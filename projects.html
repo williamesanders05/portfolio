@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav__link" data-link>Home</a>
+        <a href="projects.html" class="nav__link" data-link>Projects</a>
+        <a href="https://forms.gle/R2tEWMdxfNx22hoR9" class="nav__link" target="_blank">Contact Me</a>
+    </nav>
+    
+    <div class="slider">
+        <div class="item">
+            <h1>Huffman Encryptor</h1>
+            <p>This project uses Python and Flask to allow users to upload a text file which the application then puts through a Huffman Encryption algorith which returns an encrypted file as well as an encrypted key. When both the key and encrypted file are put back into the app the original text is returned. Read More about it <a href="https://github.com/williamesanders05/flask_huffman" target="_blank">Here</a></p>
+            <a href="https://williamesanders05.pythonanywhere.com/" target="_blank">Try it Yourself</a>
+            <br>
+            <button class="next">Next</button>
+        </div>
+        <div class="item">
+            <button class="prev">Prev</button>
+            <h1>Social Stocks</h1>
+            <p>Social Stocks is a web app which allows users to search for stock prices and compare current stock prices to what they paid. This web app was made using Django, sqlite, and the alphavantage stock API. You can visit the github page for the website <a href='https://github.com/williamesanders05/socialstocks' target='_blank'>Here</a>.</p>
+            <button class="next">Next</button>
+        </div>
+        <div class="item">
+            <button class="prev">prev</button>
+            <h1>Hangman</h1>
+            <p>While taking Data Structures during my Freshman year of college I was tasked with creating hangman with a twist, this game would use a dictionary and your guesses to actively cheat and choose new possible words while you are playing. Through this project I learned to better use Data Structures such as Sets and ArrayLists. Since this was a school project I cannot include any code.</p>
+        </div>
+    </div>
+    
+    <script>
+        const items = document.querySelectorAll('.slider .item');
+        const next = document.querySelectorAll('.next');
+        const prev = document.querySelectorAll('.prev');
+    
+        let active = 0;
+        function loadShow(){
+            items.forEach((item, index) => {
+                let stt = index - active;
+                item.style.transform = `translateY(${120*stt}px) scale(${1 - 0.2*Math.abs(stt)})`;
+                item.style.zIndex = -Math.abs(stt);
+                item.style.filter = 'blur(5px)';
+                item.style.opacity = Math.abs(stt) > 2 ? 0 : 0.6;
+                if (stt === 0) {
+                    item.style.transform = 'none';
+                    item.style.zIndex = 1;
+                    item.style.filter = 'none';
+                    item.style.opacity = 1;
+                }
+            });
+        }
+        loadShow();
+        for (var i = 0; i < next.length; i++) {
+            next[i].addEventListener('click', () => {
+                active = active + 1 < items.length ? active + 1 : active;
+                loadShow();
+            });
+        }
+        for (var i = 0; i < prev.length; i++) {
+            prev[i].addEventListener('click', () => {
+                active = active - 1 >= 0 ? active - 1 : active;
+                loadShow();
+            });
+        }
+    </script>
+</body>
+</html>
